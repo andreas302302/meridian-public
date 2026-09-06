@@ -2,8 +2,8 @@
 <html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Accelith Meridian &#8212; Track Record</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@600&display=swap');
-:root{--navy:#0D1F3C;--steel:#5A7099;--muted:#9AACBE;--bord:#e8e4dc;--bg:#f6f4ef;}
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&display=swap');
+:root{--navy:#0D1F3C;--steel:#5A7099;--muted:#9AACBE;--bord:#e8e4dc;--bg:#f6f4ef;--pos:#2A6E49;--neg:#B03020;}
 *{box-sizing:border-box;}
 body{margin:0;background:var(--bg);font-family:'DM Sans',system-ui,-apple-system,sans-serif;color:var(--navy);}
 .mer{max-width:900px;margin:0 auto;padding:8px;}
@@ -11,7 +11,9 @@ body{margin:0;background:var(--bg);font-family:'DM Sans',system-ui,-apple-system
 .mer .pills{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:34px;}
 .mer .pill{flex:1 1 150px;min-width:130px;padding:14px 16px;border:1px solid var(--bord);border-radius:4px;background:transparent;}
 .mer .pill .pl{font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--steel);margin-bottom:8px;}
-.mer .pill .pv{font-size:22px;font-weight:700;color:var(--navy);font-variant-numeric:tabular-nums;line-height:1;}
+.mer .pill .pv{font-size:18px;font-weight:600;color:var(--navy);font-variant-numeric:tabular-nums;line-height:1;}
+.mer .pill .pv.pos{color:var(--pos);}
+.mer .pill .pv.neg{color:var(--neg);}
 .mer .pill .ps{font-size:11px;color:var(--steel);margin-top:5px;font-variant-numeric:tabular-nums;}
 .mer .cap{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--steel);margin-bottom:10px;}
 .mer .chartbox{position:relative;height:280px;margin-bottom:14px;}
@@ -20,18 +22,13 @@ body{margin:0;background:var(--bg);font-family:'DM Sans',system-ui,-apple-system
 .mer .disc{font-size:11px;color:var(--muted);line-height:1.6;border-top:1px solid var(--bord);padding-top:14px;}
 </style></head>
 <body><div class="mer">
-<div class="lbl">Systematic Strategy &#183; Meridian &#183; Track Record</div>
-<div class="pills">
-  <div class="pill"><div class="pl">Annualised return</div><div class="pv">13.9%</div><div class="ps">SPY 11.0%</div></div>
-  <div class="pill"><div class="pl">Volatility</div><div class="pv">13.8%</div><div class="ps">SPY 17.1%</div></div>
-  <div class="pill"><div class="pl">Sharpe ratio</div><div class="pv">1.02</div><div class="ps">SPY 0.7</div></div>
-  <div class="pill"><div class="pl">Maximum drawdown</div><div class="pv">−26.2%</div><div class="ps">SPY −53.1%</div></div>
-</div>
+<div class="lbl">Accelith Meridian &#183; Track Record &#183; Since November 2004</div>
+<div class="pills"><div class="pill"><div class="pl">Annualised return</div><div class="pv pos">+13.9%</div><div class="ps">SPY 11.0%</div></div><div class="pill"><div class="pl">Volatility</div><div class="pv">13.8%</div><div class="ps">SPY 17.1%</div></div><div class="pill"><div class="pl">Sharpe ratio</div><div class="pv">1.02</div><div class="ps">SPY 0.7</div></div><div class="pill"><div class="pl">Maximum drawdown</div><div class="pv neg">−26.2%</div><div class="ps">SPY −53.1%</div></div></div>
 <div class="cap">Cumulative Performance &#183; growth of 100</div>
 <div class="chartbox"><canvas id="mer-line"></canvas></div>
 <div class="legend">
   <div><svg width="22" height="10"><line x1="0" y1="5" x2="22" y2="5" stroke="#0D1F3C" stroke-width="2.5"/></svg>Meridian</div>
-  <div><svg width="22" height="10"><line x1="0" y1="5" x2="22" y2="5" stroke="#9AACBE" stroke-width="1.5" stroke-dasharray="4 2"/></svg>S&amp;P 500 (SPY)</div>
+  <div><svg width="22" height="10"><line x1="1" y1="5" x2="21" y2="5" stroke="#9AACBE" stroke-width="2" stroke-linecap="round" stroke-dasharray="0.5 5"/></svg>S&amp;P 500 (SPY)</div>
 </div>
 <div class="disc">Backtest of the Meridian rules on the historical prices of the US-listed ETFs, total return, from November 2004. From the marked point the series continues out of sample, updated daily. The series is a rules-based model calculation, not an audited record of actual trading. Model results are not a reliable indicator of future results. The least favourable twelve-month entry while following the strategy produced a loss of about 26%.</div>
 </div>
@@ -48,7 +45,7 @@ body{margin:0;background:var(--bg);font-family:'DM Sans',system-ui,-apple-system
     new Chart(document.getElementById("mer-line"),{
       type:"line",plugins:[goMarker],
       data:{labels:labels,datasets:[
-        {label:"SPY",data:sdata,borderColor:MUTED,borderWidth:1.5,borderDash:[5,3],pointRadius:0,tension:0.25,fill:false},
+        {label:"SPY",data:sdata,borderColor:MUTED,borderWidth:2,borderDash:[0.5,5],borderCapStyle:"round",pointRadius:0,tension:0.25,fill:false},
         {label:"Meridian",data:kdata,borderColor:NAVY,borderWidth:2,pointRadius:0,tension:0.25,fill:false}
       ]},
       options:{responsive:true,maintainAspectRatio:false,
@@ -66,7 +63,7 @@ body{margin:0;background:var(--bg);font-family:'DM Sans',system-ui,-apple-system
                 if(i>0&&labels[i-1]&&labels[i-1].slice(0,4)===d.slice(0,4))return "";
                 return (parseInt(yr(d))%3===0)?yr(d):"";}}},
           y:{grid:{color:BORD},border:{display:false},
-            ticks:{color:STEEL,font:{size:10},callback:function(v){return v;}}}}
+            ticks:{color:STEEL,font:{size:10}}}}
       }
     });
   }
