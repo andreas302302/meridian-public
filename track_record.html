@@ -2,7 +2,9 @@
 <html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Accelith Meridian &#8212; Track Record</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&display=swap');
+@font-face{font-family:'DM Sans';font-style:normal;font-weight:400;font-display:swap;src:url('assets/dm-sans-latin-400-normal.woff2') format('woff2');}
+@font-face{font-family:'DM Sans';font-style:normal;font-weight:500;font-display:swap;src:url('assets/dm-sans-latin-500-normal.woff2') format('woff2');}
+@font-face{font-family:'DM Sans';font-style:normal;font-weight:600;font-display:swap;src:url('assets/dm-sans-latin-600-normal.woff2') format('woff2');}
 :root{--navy:#0D1F3C;--steel:#5A7099;--muted:#9AACBE;--bord:#e8e4dc;--bg:#f6f4ef;--pos:#2A6E49;--neg:#B03020;}
 *{box-sizing:border-box;}
 body{margin:0;background:var(--bg);font-family:'DM Sans',system-ui,-apple-system,sans-serif;color:var(--navy);}
@@ -32,6 +34,7 @@ body{margin:0;background:var(--bg);font-family:'DM Sans',system-ui,-apple-system
 </div>
 <div class="disc">Backtest of the Meridian rules on the historical prices of the US-listed ETFs, total return, from January 2006. From the marked point the series continues out of sample, updated daily. The series is a rules-based model calculation, not an audited record of actual trading. Model results are not a reliable indicator of future results. The least favourable twelve-month entry while following the strategy produced a loss of about 26%.</div>
 </div>
+<script src="assets/chart.umd.js"></script>
 <script>
 (function(){
   var NAVY="#0D1F3C",MUTED="#9AACBE",STEEL="#5A7099",BORD="#e8e4dc",BG="#f6f4ef";
@@ -70,10 +73,7 @@ body{margin:0;background:var(--bg);font-family:'DM Sans',system-ui,-apple-system
       }
     });
   }
-  if(typeof Chart!=="undefined"){build();}
-  else{var sc=document.createElement("script");
-    sc.src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js";
-    sc.onload=build;document.head.appendChild(sc);}
+  build();
 })();
 </script>
 </body></html>
